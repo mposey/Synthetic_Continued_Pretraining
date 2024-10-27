@@ -171,7 +171,7 @@ class QuALITY(Task):
 
     @staticmethod
     def _load_split(split: str):
-        file_path = f'data/dataset/raw/QuALITY.v1.0.1.htmlstripped.{split}'
+        file_path = f'/home/mep296/Synthetic_Continued_Pretraining/data/dataset/raw/QuALITY.v1.0.1.htmlstripped.{split}'
         return jload_list(file_path)
 
     def _create_documents(self):

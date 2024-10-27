@@ -8,6 +8,8 @@ def _get_bin(task_name: str, split: str):
     bin_data_dir = 'data/dataset/bins'
     implemented_quality_split = {
         'entigraph': f'{bin_data_dir}/quality_all-entigraphgpt-4-turbo.bin',
+        'raw': f'{bin_data_dir}/quality_all.bin',
+        'rephrase': f'{bin_data_dir}/quality_all-rephrasemeta-llama/Meta-Llama-3.1-8B-Instruct-Turbo.bin'
     }
     implemented_rehersal_split = {
         'rpj-train': f'{bin_data_dir}/togethercomputer_RedPajama_Data_1T_Sample_train.bin',
@@ -54,7 +56,7 @@ class CPTDataset(_MemmapDataset):
         self.rehersal_rate = rehersal_rate
         self.rehersal_data = _MemmapDataset(block_size, _get_bin('rehersal', 'rpj-train'), 1.0)
         super().__init__(block_size,
-                            _get_bin('quality', 'entigraph'),
+                            _get_bin('quality', 'rephrase'),
                             subsample_ratio)
 
     def __len__(self):
